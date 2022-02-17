@@ -6,6 +6,7 @@ const database = require("./configs/database");
 const User = require("./models/user.model");
 const userRouter = require("./routes/user.routes");
 const paperRouter = require("./routes/paper.routes");
+const reviewRequestRouter = require("./routes/review-request.routes");
 
 async function initData() {
   await User.updateOne(
@@ -40,5 +41,6 @@ app.use(express.json());
 
 app.use(userRouter);
 app.use(paperRouter);
+app.use(reviewRequestRouter);
 
 module.exports = { app };
