@@ -3,8 +3,9 @@ const bcrypt = require("bcryptjs");
 require("dotenv").config();
 
 const database = require("./configs/database");
-const userRouter = require("./routes/user.routes");
 const User = require("./models/user.model");
+const userRouter = require("./routes/user.routes");
+const paperRouter = require("./routes/paper.routes");
 
 async function initData() {
   await User.updateOne(
@@ -38,5 +39,6 @@ const app = express();
 app.use(express.json());
 
 app.use(userRouter);
+app.use(paperRouter);
 
 module.exports = { app };
