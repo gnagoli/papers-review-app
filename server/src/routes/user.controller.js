@@ -71,10 +71,27 @@ async function loginHandler(req, res) {
   // Our login logic ends here
 }
 
+/**
+ * Handle get user request
+ * @param {*} req
+ * @param {*} res
+ * @returns
+ */
+async function getUsersHandler(req, res) {
+  const users = await User.find({});
+  return res.status(200).send(
+    users.map((user) => ({
+      firstName: user.first_name,
+      lastName: user.last_name,
+      email: user.email,
+    }))
+  );
+}
+
 function getJwt(id, email) {
   return jwt.sign({ user_id: id, email }, process.env.TOKEN_KEY, {
     expiresIn: "5h",
   });
 }
 
-module.exports = { registerHandler, loginHandler };
+module.exports = { registerHandler, loginHandler, getUsersHandler };
