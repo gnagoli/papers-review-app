@@ -9,6 +9,6 @@ userRouter.post("/register", registerHandler);
 
 userRouter.post("/login", loginHandler);
 
-userRouter.get('/users', auth, getUsersHandler)
+userRouter.get('/users', auth.verifyToken, auth.admin, getUsersHandler)
 
 module.exports = userRouter;

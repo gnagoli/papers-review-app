@@ -1,9 +1,9 @@
 const express = require("express");
-
+const bcrypt = require("bcryptjs");
 require("dotenv").config();
+
 const database = require("./configs/database");
 const userRouter = require("./routes/user.routes");
-
 const User = require("./models/user.model");
 
 async function initData() {
@@ -13,11 +13,12 @@ async function initData() {
       email: "admi@ifri.org",
       first_name: "Admin",
       last_name: "System",
-      role: 'ADMIN'
+      role: "ADMIN",
+      password: await bcrypt.hash("password", 10),
     },
     { upsert: true }
   );
-  console.log('database initialized successfully')
+  console.log("database initialized successfully");
 }
 
 database
