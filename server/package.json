@@ -1,0 +1,22 @@
+{
+  "name": "paper-review-api",
+  "version": "1.0.0",
+  "description": "Paper review platform api",
+  "main": "src/server.js",
+  "scripts": {
+    "test": "npm test",
+    "start": "nodemon src/server.js"
+  },
+  "keywords": [
+    "ifri",
+    "paper"
+  ],
+  "author": "Luckmann GNAGOLI",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.17.3"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.15"
+  }
+}
