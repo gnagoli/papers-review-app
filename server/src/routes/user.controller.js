@@ -2,7 +2,6 @@ const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
 
 const User = require("../models/user.model");
-const { use } = require("./user.routes");
 
 /**
  * Handle user registration request
@@ -32,10 +31,12 @@ async function registerHandler(req, res) {
     password: encryptedPassword,
   });
   // Create token
-  const token = getJwt(user._id, email);
+  const token = getJwt(user._id, email, user.role);
   user.token = token;
 
-  return res.status(201).send({ firstName, lastName, email, token });
+  return res
+    .status(201)
+    .send({ firstName, lastName, email, token, role: user.role });
 }
 /**
  * Handle login request
@@ -56,13 +57,14 @@ async function loginHandler(req, res) {
 
   if (user && (await bcrypt.compare(password, user.password))) {
     // Create token
-    const token = getJwt(user._id, email);
+    const token = getJwt(user._id, email, user.role);
 
     // save user token
     user.token = token;
     const { firstName, lastName } = {
       firstName: user.first_name,
       lastName: user.last_name,
+      role: user.role,
     };
     // user
     return res.status(200).json({ firstName, lastName, email, token });
@@ -84,12 +86,13 @@ async function getUsersHandler(req, res) {
       firstName: user.first_name,
       lastName: user.last_name,
       email: user.email,
+      role: user.role,
     }))
   );
 }
 
-function getJwt(id, email) {
-  return jwt.sign({ user_id: id, email }, process.env.TOKEN_KEY, {
+function getJwt(id, email, role) {
+  return jwt.sign({ user_id: id, email, role }, process.env.TOKEN_KEY, {
     expiresIn: "5h",
   });
 }

@@ -5,6 +5,7 @@ const userSchema = mongoose.Schema({
     last_name: {type: String, default: null},
     email: {type: String, default: null},
     password: {type: String, default: null},
+    role: {type: String, default: 'REVIEWER'},
     token: {type: String, default: null},
 })
 
