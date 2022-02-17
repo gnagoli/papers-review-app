@@ -8,6 +8,7 @@ const userRouter = require("./routes/user.routes");
 const paperRouter = require("./routes/paper.routes");
 const reviewRequestRouter = require("./routes/review-request.routes");
 const reviewRouter = require("./routes/review.routes");
+const fileUpload = require("express-fileupload");
 
 async function initData() {
   await User.updateOne(
@@ -39,6 +40,10 @@ database
 const app = express();
 
 app.use(express.json());
+
+app.use(fileUpload({
+  limits: { fileSize: 50 * 1024 * 1024 },
+}));
 
 app.use(userRouter);
 app.use(paperRouter);

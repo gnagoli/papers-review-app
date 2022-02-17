@@ -1,3 +1,5 @@
+const path = require("path");
+
 const Paper = require("../models/paper.model");
 const User = require("../models/user.model");
 
@@ -39,4 +41,61 @@ async function findAllPaperHandler(req, res) {
   return res.status(200).send(papers);
 }
 
-module.exports = { createPaperHandler, findAllPaperHandler };
+async function addPaperFileHandler(req, res) {
+  const file = req.files.paperfile;
+
+  return Paper.findById(req.params.id)
+    .then(async (paper) => {
+      const filePath = path.join(
+        __dirname,
+        "..",
+        "..",
+        "files",
+        req.params.id + "_" + file.name
+      );
+      file.mv(filePath, async (err) => {
+        if (err) {
+          console.log(err);
+          return res.status(500).send(err);
+        }
+        await Paper.updateOne(
+          { _id: paper._id },
+          { fileurl: path.join("files", req.params.id + "_" + file.name) }
+        );
+        return res.send({ status: "success", path: filePath });
+      });
+    })
+    .catch((err) => {
+      return res.status(500).send(err);
+    });
+}
+
+async function getPaperHandler(req, res) {
+  return Paper.findById(req.params.id)
+    .then((paper) => {
+      return res.status(200).send(paper);
+    })
+    .catch((err) => {
+      res.status(500).send(err);
+    });
+}
+
+async function getPaperFileHandler(req, res) {
+  return Paper.findById(req.params.id)
+    .then((paper) => {
+      return res
+        .status(200)
+        .sendFile(path.join(__dirname, "..", "..", paper.fileurl));
+    })
+    .catch((err) => {
+      res.status(500).send(err);
+    });
+}
+
+module.exports = {
+  createPaperHandler,
+  findAllPaperHandler,
+  addPaperFileHandler,
+  getPaperFileHandler,
+  getPaperHandler,
+};
