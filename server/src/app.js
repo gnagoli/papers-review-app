@@ -11,17 +11,20 @@ const reviewRouter = require("./routes/review.routes");
 const fileUpload = require("express-fileupload");
 
 async function initData() {
-  await User.updateOne(
-    { email: "admi@ifri.org" },
-    {
-      email: "admi@ifri.org",
-      first_name: "Admin",
-      last_name: "System",
-      role: "ADMIN",
-      password: await bcrypt.hash("password", 10),
-    },
-    { upsert: true }
-  );
+  const admin = await User.findOne({ email: "admi@ifri.org" });
+  if (!admin) {
+    await User.updateOne(
+      { email: "admi@ifri.org" },
+      {
+        email: "admi@ifri.org",
+        first_name: "Admin",
+        last_name: "System",
+        role: "ADMIN",
+        password: await bcrypt.hash("password", 10),
+      },
+      { upsert: true }
+    );
+  }
   console.log("database initialized successfully");
 }
 
@@ -41,9 +44,11 @@ const app = express();
 
 app.use(express.json());
 
-app.use(fileUpload({
-  limits: { fileSize: 50 * 1024 * 1024 },
-}));
+app.use(
+  fileUpload({
+    limits: { fileSize: 50 * 1024 * 1024 },
+  })
+);
 
 app.use(userRouter);
 app.use(paperRouter);
