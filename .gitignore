@@ -165,3 +165,4 @@ src/test/resources/firebase_config.json
 src/main/resources/config/application-secret.yml
 .deploy/docker/.env.*
 src/main/resources/static/firebase/firebase-config.js
+server/.env
