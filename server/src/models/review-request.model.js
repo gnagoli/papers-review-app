@@ -1,7 +1,7 @@
 const mongoose = require("mongoose");
 
 const reviewRequestModel = mongoose.Schema({
-  reviwer: { type: String },
+  reviewer: { type: String },
   paper_id: { type: String },
   title: { type: String },
   request_date: { type: Date, default: new Date() },

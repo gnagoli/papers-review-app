@@ -40,15 +40,12 @@ async function admin(req, res, next) {
   }
 
   const user = await User.findById(req.user.user_id);
-console.log(user);
   const role = user.role;
   if (role !== "ADMIN") {
     return res
       .status(403)
       .send({ message: "You are not allowed to access this resource" });
   }
-
-  console.log(req.user);
   next();
 }
 
