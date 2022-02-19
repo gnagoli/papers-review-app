@@ -8,7 +8,8 @@
   </a>
   <div class="links">
     <a class="papers-link" href="/home#papers-list"> <span>Articles</span> </a>
-    <a class="btn register" [routerLink]="['/register']"> <span>Inscription</span> </a>
-    <a class="btn login" [routerLink]="['/login']"> <span>Connexion</span> </a>
+    <a *ngIf="!connected" class="btn register" [routerLink]="['/register']"> <span>Inscription</span> </a>
+    <a *ngIf="!connected" class="btn login" [routerLink]="['/login']"> <span>Connexion</span> </a>
+    <a *ngIf="connected" class="btn login" [routerLink]="['/dashboard']"> <span>Dashboard</span> </a>
   </div>
 </div>

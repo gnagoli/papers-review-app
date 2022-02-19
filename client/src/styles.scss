@@ -2,7 +2,8 @@
 // @import url('https://fonts.googleapis.com/css2?family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap')
 
 app-login,
-app-register {
+app-register,
+app-submission {
   .login {
     min-height: calc(100vh - 12rem);
     min-width: 100vw;
@@ -30,6 +31,12 @@ app-register {
     margin-bottom: 1rem;
   }
 
+  textarea {
+    width: 20rem;
+    margin-top: .5rem;
+    margin-bottom: 1rem;
+  }
+
   input[type=submit] {
     background-color: #007aff;
     padding: .5rem 1rem;
@@ -37,4 +44,53 @@ app-register {
     color: white;
   }
 
+}
+
+app-submission {
+  form>div>input {
+    width: 40rem;
+  }
+
+  textarea {
+    width: 40rem;
+  }
+}
+
+.paper-list {
+  list-style: none;
+  text-align: left;
+}
+
+.paper-list-item {
+  text-align: left;
+  cursor: pointer;
+}
+
+.paper-title {
+  text-align: left;
+  color: #007aff;
+}
+
+.paper-preview {}
+
+.paper-author {
+  text-align: right;
+}
+
+.section-title {
+  font-weight: 200;
+  font-size: 3rem;
+  text-align: center;
+
+}
+.pending {
+  color: orange;
+}
+
+.approved {
+  color: green;
+}
+
+.rejected {
+  color: rgb(233, 118, 118);
 }

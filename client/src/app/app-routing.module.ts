@@ -1,3 +1,5 @@
+import { DashboardComponent } from './dashboard/dashboard.component';
+import { SubmissionComponent } from './submission/submission.component';
 import { ArtilcePageComponent } from './artilce-page/artilce-page.component';
 import { RegisterComponent } from './register/register.component';
 import { LoginComponent } from './login/login.component';
@@ -27,6 +29,13 @@ const routes: Routes = [
     path: 'article/:id',
     component: ArtilcePageComponent
   },
+  {
+    path: 'submission',
+    component: SubmissionComponent
+  }, {
+    path: 'dashboard',
+    component: DashboardComponent
+  }
 ];
 
 @NgModule({

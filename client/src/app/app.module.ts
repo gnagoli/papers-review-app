@@ -10,6 +10,8 @@ import { ArticleListComponent } from './article-list/article-list.component';
 import { ArtilcePageComponent } from './artilce-page/artilce-page.component';
 import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
+import { SubmissionComponent } from './submission/submission.component';
+import { DashboardComponent } from './dashboard/dashboard.component';
 
 @NgModule({
   declarations: [
@@ -20,7 +22,9 @@ import { RegisterComponent } from './register/register.component';
     ArticleListComponent,
     ArtilcePageComponent,
     LoginComponent,
-    RegisterComponent
+    RegisterComponent,
+    SubmissionComponent,
+    DashboardComponent
   ],
   imports: [
     BrowserModule,
