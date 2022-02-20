@@ -9,6 +9,7 @@ const paperRouter = require("./routes/paper.routes");
 const reviewRequestRouter = require("./routes/review-request.routes");
 const reviewRouter = require("./routes/review.routes");
 const fileUpload = require("express-fileupload");
+const Paper = require("./models/paper.model");
 
 async function initData() {
   const admin = await User.findOne({ email: "admi@ifri.org" });
@@ -25,7 +26,41 @@ async function initData() {
       { upsert: true }
     );
   }
-  console.log("database initialized successfully");
+  // let subjects = [
+  //   "Mathematiques",
+  //   "Mathematiques",
+  //   "Informatique",
+  //   "Informatique",
+  //   "Ingenierie",
+  //   "Santé",
+  //   "Santé",
+  //   "Sociologie",
+  //   "Intellience Artificielle",
+  //   "Sociologie",
+  //   "Intellience Artificielle",
+  //   "Ingenierie",
+  //   "Santé",
+  //   "Sociologie",
+  //   "Intellience Artificielle",
+  //   "Sociologie",
+  //   "Intellience Artificielle",
+  // ];
+  // let i = 0;
+  // for (let subject of subjects) {
+  //   let st = "NEW";
+  // //  st = i < (2 * subjects.length) / 3 ? "APPROVED" : "REJECTED";
+  //   await Paper.create({
+  //     title: "Ebauche de recherche appliqué en " + subject,
+  //     subject: subject,
+  //     keywords: `${subject},science,appliqué`,
+  //     author: "lkgnagoli@gmail.com",
+  //     summary: `Lorem ipsum dolor sit amet consectetur, adipisicing elit. Et minima eum nesciunt libero inventore alias consequuntur beatae autem nemo labore saepe aliquid tempora, eveniet molestiae repudiandae illo praesentium? Facilis ad obcaecati quasi expedita? Voluptatem reiciendis reprehenderit vitae. Iure libero fugit hic laborum cum accusantium voluptatem? Dolorum eligendi sint voluptatum possimus earum incidunt vero repellendus minima nostrum consequuntur. Facere, totam beatae.`,
+  //     status: st,
+  //   });
+  //   i++;
+  // }
+
+  // console.log("database initialized successfully");
 }
 
 database
@@ -44,7 +79,7 @@ const app = express();
 
 app.use(express.json());
 
-app.use(fileUpload({limits: { fileSize: 50 * 1024 * 1024 }}));
+app.use(fileUpload({ limits: { fileSize: 50 * 1024 * 1024 } }));
 
 app.use(userRouter);
 app.use(paperRouter);

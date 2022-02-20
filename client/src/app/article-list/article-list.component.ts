@@ -1,3 +1,4 @@
+import { AppService } from './../app.service';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -6,10 +7,20 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./article-list.component.scss']
 })
 export class ArticleListComponent implements OnInit {
-
-  constructor() { }
+  public articles: any = [];
+  public domains: any = []
+  constructor(private appService: AppService) { }
 
   ngOnInit(): void {
+    this.appService.findArticles()
+      .subscribe((data:any) => {
+        this.articles =[...data];
+        this.domains = new Set(data.map((d:any)=>d.subject));
+      },
+        err => {
+          console.log(err);
+        }
+      );
   }
 
 }

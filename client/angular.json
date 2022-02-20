@@ -70,12 +70,16 @@
         },
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
+          "options": {
+            "browserTarget": "ifri-paper-review:build",
+            "proxyConfig": "src/proxy.conf.json"
+          },
           "configurations": {
             "production": {
               "browserTarget": "ifri-paper-review:build:production"
             },
             "development": {
-              "browserTarget": "ifri-paper-review:build:development"
+              "browserTarget": "ifri-paper-review:build:development",
             }
           },
           "defaultConfiguration": "development"

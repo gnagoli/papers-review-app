@@ -1,3 +1,4 @@
+import { AuthGuard } from './auth.guard';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { SubmissionComponent } from './submission/submission.component';
 import { ArtilcePageComponent } from './artilce-page/artilce-page.component';
@@ -31,10 +32,12 @@ const routes: Routes = [
   },
   {
     path: 'submission',
-    component: SubmissionComponent
+    component: SubmissionComponent,
+    canActivate:[AuthGuard]
   }, {
     path: 'dashboard',
-    component: DashboardComponent
+    component: DashboardComponent,
+    canActivate:[AuthGuard]
   }
 ];
 

@@ -1,3 +1,4 @@
+import { AppService } from './../app.service';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -7,9 +8,21 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HomeComponent implements OnInit {
 
-  constructor() { }
+  public articles: any = [];
+
+  constructor(private appService: AppService) { }
 
   ngOnInit(): void {
+    // this.appService.findArticles()
+    //   .subscribe(data => {
+    //     this.articles = data;
+    //   },
+    //     err => {
+    //       console.log(err);
+    //     }
+
+    //   );
+
   }
 
 }
