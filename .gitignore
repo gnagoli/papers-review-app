@@ -1,11 +1,5 @@
 
 server/files/
-######################
-# Project Specific
-######################
-/src/main/webapp/content/css/main.css
-/target/classes/static/**
-/src/test/javascript/coverage/
 
 ######################
 # Node
@@ -78,24 +72,13 @@ out/
 !.vscode/extensions.json
 *.code-workspace
 
-######################
-# Maven
-######################
-/log/
-/target/
 
-######################
-# Gradle
-######################
-.gradle/
-/build/
+
+
 
 ######################
 # Package Files
 ######################
-*.jar
-*.war
-*.ear
 *.db
 
 ######################
@@ -139,16 +122,9 @@ Desktop.ini
 *~
 .merge_file*
 
-######################
-# Gradle Wrapper
-######################
-!gradle/wrapper/gradle-wrapper.jar
 
-######################
-# Maven Wrapper
-######################
-!.mvn/wrapper/maven-wrapper.jar
-######################
+
+
 # ESLint
 ######################
 .eslintcache
@@ -160,9 +136,5 @@ Desktop.ini
 /.nyc_output/
 
 #ENV FILES
-src/main/resources/firebase_config.json
-src/test/resources/firebase_config.json
-src/main/resources/config/application-secret.yml
 .deploy/docker/.env.*
-src/main/resources/static/firebase/firebase-config.js
 server/.env
