@@ -17,18 +17,26 @@
         target="_blank"
         >Lire l'article</a
       >
-      <a class="btn rate">Noter l'article</a>
+      <a class="btn rate" [routerLink]="['/review', article._id]"
+        >Noter l'article</a
+      >
     </div>
   </div>
   <div>
     <article>
       <h5>Abstract</h5>
       <p>{{ article.summary }}</p>
+      <a class="btn add-reviewer" [routerLink]="['/add-reviewer', article._id]"
+        >Review Request</a
+      >
     </article>
   </div>
 </div>
 <div class="reviews">
-  <h3>Reviews</h3>
+  <div>
+    <h3>Reviews</h3>
+  </div>
+
   <ul class="reviewers">
     <li *ngFor="let item of [3, 4, 5, 6, 7, 0]">
       <h5>Lorand</h5>

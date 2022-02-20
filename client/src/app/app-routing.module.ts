@@ -1,3 +1,5 @@
+import { ReviewingComponent } from './reviewing/reviewing.component';
+import { AddReviewerComponent } from './add-reviewer/add-reviewer.component';
 import { AuthGuard } from './auth.guard';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { SubmissionComponent } from './submission/submission.component';
@@ -31,13 +33,23 @@ const routes: Routes = [
     component: ArtilcePageComponent
   },
   {
+    path: 'add-reviewer/:id',
+    component: AddReviewerComponent,
+    canActivate: [AuthGuard]
+  },
+  {
+    path: 'review/:id',
+    component: ReviewingComponent,
+    canActivate: [AuthGuard]
+  },
+  {
     path: 'submission',
     component: SubmissionComponent,
-    canActivate:[AuthGuard]
+    canActivate: [AuthGuard]
   }, {
     path: 'dashboard',
     component: DashboardComponent,
-    canActivate:[AuthGuard]
+    canActivate: [AuthGuard]
   }
 ];
 

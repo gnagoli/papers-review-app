@@ -40,4 +40,11 @@ export class AppService {
     return this.httpClient.get(`${this.baseUrl}/papers/${id}`);
   }
 
+  public addReviewer(data: { paper: any; reviewer: any; }) {
+
+    return this.httpClient.post(`${this.baseUrl}/review-requests`, data);
+
+  }
+
+
 }
