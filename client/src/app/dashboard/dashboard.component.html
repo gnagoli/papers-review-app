@@ -2,7 +2,7 @@
   <section>
     <h1 class="section-title">Articles en attentes</h1>
     <ul class="paper-list" *ngFor="let item of articles.pending">
-      <li class="paper-list-item" [routerLink]="['/article', item]">
+      <li class="paper-list-item" [routerLink]="['/article', item._id]">
         <h2 class="paper-title pending">{{ item?.title }}</h2>
         <p class="paper-preview">
           {{ item?.summary }}
@@ -14,7 +14,7 @@
   <section>
     <h1 class="section-title">Articles approuvés</h1>
     <ul class="paper-list" *ngFor="let item of articles.approved">
-      <li class="paper-list-item" [routerLink]="['/article', item]">
+      <li class="paper-list-item" [routerLink]="['/article', item._id]">
         <h2 class="paper-title approved">{{ item?.title }}</h2>
         <p class="paper-preview">
           {{ item?.summary }}
@@ -26,9 +26,9 @@
   <section>
     <h1 class="section-title">Articles rejetés</h1>
     <ul class="paper-list" *ngFor="let item of articles.rejected">
-      <li class="paper-list-item" [routerLink]="['/article', item]">
+      <li class="paper-list-item" [routerLink]="['/article', item._id]">
         <h2 class="paper-title rejected">
-          Modelisation des ondes gravitationnelle
+          {{ item?.summary }}
         </h2>
         <p class="paper-preview">
           {{ item?.summary }}

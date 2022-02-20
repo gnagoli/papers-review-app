@@ -36,5 +36,8 @@ export class AppService {
     return this.httpClient.post(`${this.baseUrl}/papers`, data);
 
   }
+  public getArticle(id: string) {
+    return this.httpClient.get(`${this.baseUrl}/papers/${id}`);
+  }
 
 }

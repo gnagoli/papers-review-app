@@ -1,1 +1,45 @@
-<p>artilce-page works!</p>
+<div class="page-header">
+  <div class="article-header">
+    <div>
+      <h2>{{ article.title }}</h2>
+      <p>{{ article.author }}</p>
+      <p>
+        {{ article.submission_date | date: "medium" }}, {{ article.subject }}
+      </p>
+    </div>
+    <div class="btn-group">
+      <a
+        class="btn read-article"
+        *ngIf="article.fileurl"
+        href="{{ apiUrl }}/papers/{{ article._id }}/file?access_token={{
+          access_token
+        }}"
+        target="_blank"
+        >Lire l'article</a
+      >
+      <a class="btn rate">Noter l'article</a>
+    </div>
+  </div>
+  <div>
+    <article>
+      <h5>Abstract</h5>
+      <p>{{ article.summary }}</p>
+    </article>
+  </div>
+</div>
+<div class="reviews">
+  <h3>Reviews</h3>
+  <ul class="reviewers">
+    <li *ngFor="let item of [3, 4, 5, 6, 7, 0]">
+      <h5>Lorand</h5>
+      <p>
+        Lorem ipsum dolor, sit amet consectetur adipisicing elit. Expedita
+        voluptate harum fuga animi distinctio quia ullam est, architecto
+        possimus culpa, ipsam, recusandae ex. Sapiente provident, inventore
+        velit temporibus ipsam veritatis.
+      </p>
+      <h6>Lu et approuvé</h6>
+      <hr />
+    </li>
+  </ul>
+</div>

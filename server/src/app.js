@@ -60,6 +60,13 @@ async function initData() {
   //   i++;
   // }
 
+  // await Paper.updateMany(
+  //   {},
+  //   { 
+  //   fileurl: "files/620ebf1bf3d1611de5cdb6df_code-du-travail-benin.pdf" ,
+  //   summary: `Lorem ipsum dolor sit amet consectetur, adipisicing elit. Et minima eum nesciunt libero inventore alias consequuntur beatae autem nemo labore saepe aliquid tempora, eveniet molestiae repudiandae illo praesentium? Facilis ad obcaecati quasi expedita? Voluptatem reiciendis reprehenderit vitae. Iure libero fugit hic laborum cum accusantium voluptatem? Dolorum eligendi sint voluptatum possimus earum incidunt vero repellendus minima nostrum consequuntur. Facere, totam beatae.`,
+  // }
+  // );
   // console.log("database initialized successfully");
 }
 
